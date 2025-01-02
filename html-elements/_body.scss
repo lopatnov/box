@@ -1,0 +1,33 @@
+@use "../layouts/flex";
+
+@mixin fullScreenApplication($selector: "") {
+  html#{$selector},
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  html#{$selector} body {
+    overflow-y: auto;
+  }
+}
+
+@mixin flexBody(
+  $selector: "",
+  $direction: row,
+  $justify-content: flex-start,
+  $align-items: stretch,
+  $align-content: stretch,
+  $flex-wrap: nowrap
+) {
+  body#{$selector} {
+    @include flex.flex(
+      $direction,
+      $justify-content,
+      $align-items,
+      $align-content,
+      $flex-wrap
+    );
+  }
+}

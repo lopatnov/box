@@ -1,0 +1,76 @@
+@use "sass:map";
+@use "sass:meta";
+@use "sass:string";
+
+@function _concatFontSource($font-src, $source) {
+  @if (not $font-src) {
+    @return $source;
+  }
+
+  @return "#{$font-src}, #{$source}";
+}
+
+@function _validateFontUrl($font-url) {
+  @if (not $font-url) {
+    @error "Font URL is required. For example: `fonts: (url: 'path/to/font.woff2', format: 'woff2')`";
+  }
+
+  @return true;
+}
+
+@function _getFontFormatByEnding($font-url, $font-format) {
+  @if ($font-format) {
+    @return $font-format;
+  } @else if (string.slice($font-url, -5) == "woff2") {
+    @return "woff2";
+  } @else if (string.slice($font-url, -4) == "woff") {
+    @return "woff";
+  } @else if (string.slice($font-url, -4) == "ttf") {
+    @return "ttf";
+  } @else if (string.slice($font-url, -4) == "otf") {
+    @return "otf";
+  } @else if (string.slice($font-url, -4) == "svg") {
+    @return "svg";
+  } @else if (string.slice($font-url, -4) == "eot") {
+    @return "eot";
+  } @else {
+    @error "Unsupported font format in URL: '#{$font-url}'. Please provide a format manually.";
+  }
+}
+
+@function _makeFontSrc($fonts, $font-src: null) {
+  @if (meta.type-of($fonts) == "list") {
+    @each $font in $fonts {
+      $font-src: _makeFontSrc($font, $font-src);
+    }
+    @return $font-src;
+  }
+
+  $font: $fonts;
+  $isLocalFont: map.has-key($font, local);
+
+  @if ($isLocalFont) {
+    $font-local: map.get($font, local);
+    $font-src: _concatFontSource($font-src, $font-local);
+  } @else {
+    $font-url: map.get($font, "url");
+    $font-format: _getFontFormatByEnding($font-url, map.get($font, "format"));
+
+    @if (_validateFontUrl($font-url)) {
+      $source: url($font-url) format($font-format);
+      $font-src: _concatFontSource($font-src, $source);
+    }
+  }
+  @return $font-src;
+}
+
+@mixin loadFont($font-name, $fonts, $font-weight: 300, $font-style: normal) {
+  $font-src: _makeFontSrc($fonts);
+
+  @font-face {
+    font-family: $font-name;
+    src: $font-src;
+    font-weight: $font-weight;
+    font-style: $font-style;
+  }
+}
