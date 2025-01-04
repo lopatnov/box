@@ -1,11 +1,8 @@
 @use "box";
 
 @include box.reset();
-@include box.loadDefaultFont();
+@include box.loadThemeFont();
 @include box.fullScreenApplication(".full-screen");
-@include box.flexBody(".flex-body");
-
-body {
-  @include box.configure();
-  @include box.styleElement();
-}
+@include box.flexFor(".flex");
+@include box.configure();
+@include box.style();

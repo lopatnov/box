@@ -10,9 +10,12 @@
   --letter-spacing: #{$letter-spacing};
 }
 
-@mixin configureColors($color, $background-color) {
+@mixin configureColor($color) {
   --font-color: #{$color};
-  --background-color: #{$background-color};
+}
+
+@mixin configureBackground($color) {
+  --background-color: #{$color};
 }
 
 @mixin styleElement() {

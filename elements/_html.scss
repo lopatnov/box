@@ -1,0 +1,12 @@
+@mixin fullScreenApplication($selector: "") {
+  html#{$selector},
+  html#{$selector} body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  html#{$selector} body {
+    overflow-y: auto;
+  }
+}

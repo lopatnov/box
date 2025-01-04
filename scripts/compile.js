@@ -4,6 +4,7 @@ const path = require("path");
 
 const compileFilePath = "box-dist.scss";
 const outputFilePath = "dist/box.css";
+const isCompressed = process.argv.includes("--compressed");
 
 recompile();
 
@@ -14,19 +15,33 @@ if (process.argv.includes("--watch")) {
 
 function recompile() {
   console.info(`Compiling ${compileFilePath}...`);
-  const result = sass.compile(compileFilePath);
+  const boxDist = sass.compile(compileFilePath, {
+    verbose: true,
+    style: isCompressed ? "compressed" : "expanded",
+  });
   console.info("File compiled successfully");
 
   console.info(`Writing to ${outputFilePath}...`);
   const dirpath = path.dirname(outputFilePath);
   cleanDirIfExists(dirpath);
   createDirPathIfNotExist(dirpath);
-  writeToFile(outputFilePath, result.css);
+  writeToFile(outputFilePath, boxDist.css);
   console.info("File written successfully");
 
   console.info(`Copy fonts to dist...`);
   copyFolder("./fonts", "./dist/fonts");
   console.info("Fonts copied successfully");
+
+  console.info(`Copy SCSS files to dist...`);
+  copyFile("./package.npm.json", "./dist/package.json");
+  copyFile("./README.md", "./dist/README.md");
+  copyFile("./box.scss", "./dist/box.scss");
+  copyFolder("./reset", "./dist/reset");
+  copyFolder("./typography", "./dist/typography");
+  copyFolder("./themes", "./dist/themes");
+  copyFolder("./elements", "./dist/elements");
+  copyFolder("./layouts", "./dist/layouts");
+  console.info("SCSS files copied successfully");
 }
 
 function writeToFile(filePath, data) {
@@ -74,4 +89,14 @@ function copyFolder(src, dest) {
       fs.copyFileSync(srcPath, destPath);
     }
   });
+}
+
+function copyFile(src, dest) {
+  if (!fs.existsSync(src)) {
+    console.error(`Source file ${src} does not exist`);
+    return;
+  }
+  createDirPathIfNotExist(path.dirname(dest));
+  fs.copyFileSync(src, dest);
+  console.info(`File copied from ${src} to ${dest}`);
 }

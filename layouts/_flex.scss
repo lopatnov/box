@@ -9,5 +9,25 @@
   flex-direction: $direction;
   justify-content: $justify-content;
   align-items: $align-items;
+  align-content: $align-content;
   flex-wrap: $flex-wrap;
+}
+
+@mixin flexFor(
+  $selector,
+  $direction: row,
+  $justify-content: flex-start,
+  $align-items: stretch,
+  $align-content: stretch,
+  $flex-wrap: nowrap
+) {
+  #{$selector} {
+    @include flex(
+      $direction,
+      $justify-content,
+      $align-items,
+      $align-content,
+      $flex-wrap
+    );
+  }
 }

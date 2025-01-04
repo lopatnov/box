@@ -1,0 +1,61 @@
+@use "../elements/element";
+@use "../typography/font";
+
+$mainElement: "body" !default;
+
+// Typography
+$font-name: "Inter-Regular" !default;
+$font-url: "./fonts/Inter-Regular.woff2" !default;
+$font-weight: 400 !default;
+$font-style: normal !default;
+$font-size: 14px !default;
+$line-height: 1.5 !default;
+$letter-spacing: normal !default;
+
+// Light Colors
+$light-text-color: #333 !default;
+$light-background-color: #fff !default;
+
+// Dark Colors
+$dark-text-color: #fff !default;
+$dark-background-color: #333 !default;
+
+@mixin loadThemeFont() {
+  @include font.loadFont(
+    $font-name,
+    (local: $font-name) (url: $font-url),
+    $font-weight,
+    $font-style
+  );
+}
+
+@mixin configure() {
+  #{$mainElement} {
+    @include element.configureText(
+      $font-name,
+      $font-size,
+      $line-height,
+      $letter-spacing
+    );
+  }
+
+  @media (prefers-color-scheme: light) {
+    #{$mainElement} {
+      @include element.configureColor($light-text-color);
+      @include element.configureBackground($light-background-color);
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    #{$mainElement} {
+      @include element.configureColor($dark-text-color);
+      @include element.configureBackground($dark-background-color);
+    }
+  }
+}
+
+@mixin style() {
+  #{$mainElement} {
+    @include element.styleElement();
+  }
+}
