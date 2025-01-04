@@ -308,8 +308,8 @@ template {
 }
 
 @font-face {
-  font-family: "Inter";
-  src: url("../fonts/Inter-Regular.woff2") format("woff2");
+  font-family: "Inter-Regular";
+  src: local("Inter-Regular"), url("./fonts/Inter-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
@@ -333,14 +333,26 @@ body.flex-body {
 }
 
 body {
-  --font-name: Inter;
-  --font-color: #333;
-  --font-size: 12px;
+  --font-name: Inter-Regular;
+  --font-size: 14px;
   --line-height: 1.5;
   --letter-spacing: normal;
+  background-color: var(--background-color);
   font-family: var(--font-name);
   color: var(--font-color);
   font-size: var(--font-size);
   line-height: var(--line-height);
   letter-spacing: var(--letter-spacing);
+}
+@media (prefers-color-scheme: light) {
+  body {
+    --font-color: #333;
+    --background-color: #fff;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    --font-color: #fff;
+    --background-color: #333;
+  }
 }

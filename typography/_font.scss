@@ -7,7 +7,7 @@
     @return $source;
   }
 
-  @return "#{$font-src}, #{$source}";
+  @return #{$font-src}, #{$source};
 }
 
 @function _validateFontUrl($font-url) {
@@ -51,7 +51,8 @@
 
   @if ($isLocalFont) {
     $font-local: map.get($font, local);
-    $font-src: _concatFontSource($font-src, $font-local);
+    $source: local($font-local);
+    $font-src: _concatFontSource($font-src, $source);
   } @else {
     $font-url: map.get($font, "url");
     $font-format: _getFontFormatByEnding($font-url, map.get($font, "format"));

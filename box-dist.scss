@@ -1,18 +1,11 @@
 @use "box";
 
 @include box.reset();
-@include box.loadFont(
-  "Inter",
-  (
-    url: "../fonts/Inter-Regular.woff2",
-    format: "woff2",
-  ),
-  400,
-  normal
-);
+@include box.loadDefaultFont();
 @include box.fullScreenApplication(".full-screen");
 @include box.flexBody(".flex-body");
+
 body {
-  @include box.configureText("Inter", #333, 12px, 1.5, normal);
-  @include box.styleText();
+  @include box.configure();
+  @include box.styleElement();
 }

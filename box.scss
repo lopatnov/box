@@ -1,4 +1,44 @@
 @forward "reset/normalize";
 @forward "typography/font";
-@forward "typography/defaults";
+@forward "typography/element";
 @forward "./html-elements/body";
+
+@use "typography/element";
+@use "typography/font";
+
+$font-name: "Inter-Regular" !default;
+$font-url: "./fonts/Inter-Regular.woff2" !default;
+$font-weight: 400 !default;
+$font-style: normal !default;
+$font-size: 14px !default;
+$line-height: 1.5 !default;
+$letter-spacing: normal !default;
+$text-color: #333 !default;
+$background-color: #fff !default;
+$text-color-dark: #fff !default;
+$background-color-dark: #333 !default;
+
+@mixin loadDefaultFont() {
+  @include font.loadFont(
+    $font-name,
+    (local: $font-name) (url: $font-url),
+    $font-weight,
+    $font-style
+  );
+}
+
+@mixin configure() {
+  @include element.configureText(
+    $font-name,
+    $font-size,
+    $line-height,
+    $letter-spacing
+  );
+  @media (prefers-color-scheme: light) {
+    @include element.configureColors($text-color, $background-color);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @include element.configureColors($text-color-dark, $background-color-dark);
+  }
+}

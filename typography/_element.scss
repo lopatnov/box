@@ -1,18 +1,22 @@
 @mixin configureText(
   $font-name,
-  $color,
   $font-size: 1rem,
   $line-height: 1.5,
   $letter-spacing: normal
 ) {
   --font-name: #{$font-name};
-  --font-color: #{$color};
   --font-size: #{$font-size};
   --line-height: #{$line-height};
   --letter-spacing: #{$letter-spacing};
 }
 
-@mixin styleText() {
+@mixin configureColors($color, $background-color) {
+  --font-color: #{$color};
+  --background-color: #{$background-color};
+}
+
+@mixin styleElement() {
+  background-color: var(--background-color);
   font-family: var(--font-name);
   color: var(--font-color);
   font-size: var(--font-size);

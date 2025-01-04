@@ -4,7 +4,8 @@
   "description": "SCSS framework",
   "main": "box.scss",
   "scripts": {
-    "build": "node ./compile.js"
+    "build": "node ./scripts/compile.js",
+    "watch": "node ./scripts/compile.js --watch"
   },
   "repository": {
     "type": "git",
