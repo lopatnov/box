@@ -3,6 +3,5 @@
 @include box.reset();
 @include box.loadThemeFont();
 @include box.fullScreenApplication(".full-screen");
-@include box.flexFor(".flex");
 @include box.configure();
 @include box.style();
