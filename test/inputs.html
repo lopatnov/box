@@ -1,0 +1,228 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../dist/box.css" />
+    <title>Контролы</title>
+  </head>
+  <body>
+    <form action="#" method="post">
+      <label for="text">Текст:</label>
+      <input type="text" id="text" name="text" /><br /><br />
+
+      <label for="password">Пароль:</label>
+      <input type="password" id="password" name="password" /><br /><br />
+
+      <label for="email">Электронная почта:</label>
+      <input type="email" id="email" name="email" /><br /><br />
+
+      <label for="number">Число:</label>
+      <input type="number" id="number" name="number" /><br /><br />
+
+      <label for="date">Дата:</label>
+      <input type="date" id="date" name="date" /><br /><br />
+
+      <label for="color">Цвет:</label>
+      <input type="color" id="color" name="color" /><br /><br />
+
+      <label for="range">Диапазон:</label>
+      <input type="range" id="range" name="range" /><br /><br />
+
+      <label for="doubleRange">Двойной диапазон:</label>
+      <input
+        type="range"
+        id="doubleRangeMin"
+        name="doubleRangeMin"
+        min="0"
+        max="100"
+        value="25"
+        list="markers"
+      />
+      <input
+        type="range"
+        id="doubleRangeMax"
+        name="doubleRangeMax"
+        min="0"
+        max="100"
+        value="75"
+        list="markers"
+      />
+
+      <datalist id="markers">
+        <option value="0"></option>
+        <option value="25"></option>
+        <option value="50"></option>
+        <option value="75"></option>
+        <option value="100"></option>
+      </datalist>
+      <br /><br />
+
+      <label for="file">Файл:</label>
+      <input type="file" id="file" name="file" /><br /><br />
+
+      <label for="textarea">Текстовое поле:</label><br />
+      <textarea id="textarea" name="textarea" rows="4" cols="50"></textarea
+      ><br /><br />
+
+      <label for="select">Выбор:</label>
+      <select id="select" name="select">
+        <option value="option1">Опция 1</option>
+        <option value="option2">Опция 2</option>
+        <option value="option3">Опция 3</option></select
+      ><br /><br />
+
+      <label>Радио кнопки:</label><br />
+      <input type="radio" id="radio1" name="radio" value="radio1" />
+      <label for="radio1">Радио 1</label><br />
+      <input type="radio" id="radio2" name="radio" value="radio2" />
+      <label for="radio2">Радио 2</label><br />
+      <input type="radio" id="radio3" name="radio" value="radio3" />
+      <label for="radio3">Радио 3</label><br /><br />
+
+      <fieldset>
+        <legend>Группа радио 1:</legend>
+        <input
+          type="radio"
+          id="group1_radio1"
+          name="group1"
+          value="group1_radio1"
+        />
+        <label for="group1_radio1">Группа 1 Радио 1</label><br />
+        <input
+          type="radio"
+          id="group1_radio2"
+          name="group1"
+          value="group1_radio2"
+        />
+        <label for="group1_radio2">Группа 1 Радио 2</label><br />
+        <input
+          type="radio"
+          id="group1_radio3"
+          name="group1"
+          value="group1_radio3"
+        />
+        <label for="group1_radio3">Группа 1 Радио 3</label><br />
+      </fieldset>
+      <br />
+      <fieldset>
+        <legend>Группа радио 2:</legend>
+        <input
+          type="radio"
+          id="group2_radio1"
+          name="group2"
+          value="group2_radio1"
+        />
+        <label for="group2_radio1">Группа 2 Радио 1</label><br />
+        <input
+          type="radio"
+          id="group2_radio2"
+          name="group2"
+          value="group2_radio2"
+        />
+        <label for="group2_radio2">Группа 2 Радио 2</label><br />
+        <input
+          type="radio"
+          id="group2_radio3"
+          name="group2"
+          value="group2_radio3"
+        />
+        <label for="group2_radio3">Группа 2 Радио 3</label><br />
+      </fieldset>
+      <br />
+
+      <label>Флажки:</label><br />
+      <input
+        type="checkbox"
+        id="checkbox1"
+        name="checkbox1"
+        value="checkbox1"
+      />
+      <label for="checkbox1">Флажок 1</label><br />
+      <input
+        type="checkbox"
+        id="checkbox2"
+        name="checkbox2"
+        value="checkbox2"
+      />
+      <label for="checkbox2">Флажок 2</label><br />
+      <input
+        type="checkbox"
+        id="checkbox3"
+        name="checkbox3"
+        value="checkbox3"
+      />
+      <label for="checkbox3">Флажок 3</label><br /><br />
+
+      <label for="additionalTextarea">Дополнительное текстовое поле:</label
+      ><br />
+      <textarea
+        id="additionalTextarea"
+        name="additionalTextarea"
+        rows="4"
+        cols="50"
+      ></textarea
+      ><br /><br />
+
+      <label for="tel">Телефон:</label>
+      <input type="tel" id="tel" name="tel" /><br /><br />
+
+      <label for="url">URL:</label>
+      <input type="url" id="url" name="url" /><br /><br />
+
+      <label for="search">Поиск:</label>
+      <input type="search" id="search" name="search" /><br /><br />
+
+      <label for="datetime-local">Дата и время:</label>
+      <input
+        type="datetime-local"
+        id="datetime-local"
+        name="datetime-local"
+      /><br /><br />
+
+      <label for="month">Месяц:</label>
+      <input type="month" id="month" name="month" /><br /><br />
+
+      <label for="week">Неделя:</label>
+      <input type="week" id="week" name="week" /><br /><br />
+
+      <label for="datetime">Дата и время (UTC):</label>
+      <input type="datetime" id="datetime" name="datetime" /><br /><br />
+
+      <label for="time">Время:</label>
+      <input type="time" id="time" name="time" /><br /><br />
+
+      <label for="hidden">Скрытое поле:</label>
+      <input
+        type="hidden"
+        id="hidden"
+        name="hidden"
+        value="hiddenValue"
+      /><br /><br />
+
+      <label for="favoriteColor">Любимый цвет:</label>
+      <input type="color" id="favoriteColor" name="favoriteColor" /><br /><br />
+
+      <label for="button">Кнопка:</label>
+      <input
+        type="button"
+        id="button"
+        name="button"
+        value="Нажми меня"
+      /><br /><br />
+
+      <label for="image">Изображение:</label>
+      <input
+        type="image"
+        id="image"
+        name="image"
+        src="./img/red_button.png"
+        alt="Красная кнопка"
+      /><br /><br />
+
+      <label for="reset">Сброс:</label>
+      <input type="reset" value="Сбросить" /><br /><br />
+
+      <input type="submit" value="Отправить" />
+    </form>
+  </body>
+</html>
