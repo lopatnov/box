@@ -1,14 +1,14 @@
 @use "../elements/element";
 @use "../typography/font";
 
-$mainElement: "body" !default;
+$mainElement: ":root" !default;
 
 // Typography
 $font-name: "Inter-Regular" !default;
 $font-url: "./fonts/Inter-Regular.woff2" !default;
 $font-weight: 400 !default;
 $font-style: normal !default;
-$font-size: 14px !default;
+$font-size: 100% !default;
 $line-height: 1.5 !default;
 $letter-spacing: normal !default;
 
